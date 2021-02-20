@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0375, 0.53125, 1 )
+colors = PoolColorArray( 0.967742, 1, 0, 0.0627451, 0.367188, 0, 0, 0.133333, 0.0429688, 0.0429688, 0.0429688, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=6]
+min_value = -1000.0
+max_value = 1000.0
+_data = [ Vector2( 0, -456.818 ), 0.0, 0.0, 0, 0, Vector2( 1, 1000 ), -331.887, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.279545 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+initial_velocity_random = 1.0
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel_curve = SubResource( 7 )
+damping_random = 0.2
+scale = 100.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+hue_variation = 0.05
+hue_variation_random = 1.0
+
+[node name="SpaceshipDeathEffect" type="Particles2D"]
+emitting = false
+amount = 1000
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 5 )
